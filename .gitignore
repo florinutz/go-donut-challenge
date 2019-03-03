@@ -1,0 +1,21 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, build with `go test -c`
+*.test
+
+# my IDE's project settings
+.idea
+
+# Builds path
+/build
+
+# Symlink for the last build artifact
+/bin
+
+# Go modules
+/vendor

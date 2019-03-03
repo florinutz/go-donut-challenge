@@ -14,8 +14,7 @@ env:
 
 script:
   - if [ -n "$(go fmt ./...)" ]; then exit 1; fi
-  - go test -race -v -coverprofile=coverage.txt -covermode=atomic ./...
-  - go build
+  - make all
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

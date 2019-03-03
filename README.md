@@ -5,8 +5,8 @@
 If you find the project structure a bit weird, 
 pls check [this](https://fosdem.org/2019/schedule/event/designingcli/) out.
 
-The most complete part (read "covered by tests") is the ticker command, 
-but everything should work nonetheless.
+The most complete and well behaved part (read "covered by tests + nice display") 
+is the `ticker` command, but everything should work nonetheless.
 
 `make binary` will build for your platform and place a `./bin` symlink 
 in the project folder for you to play with. (`./bin help`)

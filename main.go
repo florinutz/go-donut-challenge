@@ -35,6 +35,7 @@ func buildRootCommand(name string) *cobra.Command {
 
 	cmd.PersistentFlags().BoolVar(&a.Debug, "debug", false, "enables debug mode")
 
+	// todo test the outputs of these commands (actual integration testing)
 	cmd.AddCommand(
 		cmds.BuildCompletionCmd(a),
 		cmds.BuildTickerCmd(a),

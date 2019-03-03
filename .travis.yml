@@ -13,6 +13,7 @@ env:
   - GO111MODULE=on
 
 script:
+  # todo have golangci-lint here in the lint make target instead of metalinter
   - if [ -n "$(go fmt ./...)" ]; then exit 1; fi
   - make all
 

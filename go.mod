@@ -6,7 +6,6 @@ require (
 	github.com/mattn/go-colorable v0.1.1 // indirect
 	github.com/mattn/go-isatty v0.0.6 // indirect
 	github.com/preichenberger/go-coinbasepro/v2 v2.0.2
-	github.com/shopspring/decimal v0.0.0-20180709203117-cd690d0c9e24
 	github.com/sirupsen/logrus v1.3.0
 	github.com/spf13/afero v1.2.1
 	github.com/spf13/cobra v0.0.3

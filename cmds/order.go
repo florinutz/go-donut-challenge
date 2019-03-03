@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"text/template"
 
 	"github.com/fatih/color"
 
@@ -15,6 +16,8 @@ import (
 // todo there are a lot of optimisations left to do here
 // e.g. grouping params, validation
 func BuildOrderCmd(app *app.App) *cobra.Command {
+	var tpl *template.Template
+
 	var newOrder coinbasepro.Order
 
 	requiredEnvVars := []string{"COINBASE_PRO_PASSPHRASE", "COINBASE_PRO_KEY", "COINBASE_PRO_SECRET"}
@@ -42,6 +45,11 @@ func BuildOrderCmd(app *app.App) *cobra.Command {
 					return
 				}
 			}
+
+			tickerDisplay := `{{.}}` // todo elaborate display of the new order
+
+			tpl, err = template.New("ticker").Parse(tickerDisplay)
+
 			return
 		},
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -50,7 +58,12 @@ func BuildOrderCmd(app *app.App) *cobra.Command {
 				return err
 			}
 
-			_, _ = fmt.Fprintf(app.Out, "%+v", *order)
+			_, _ = fmt.Fprintf(app.Out, "Order placed\n\n")
+
+			err = tpl.Execute(app.Out, order)
+			if err != nil {
+				return err
+			}
 
 			return nil
 		},

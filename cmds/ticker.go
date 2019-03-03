@@ -11,7 +11,7 @@ import (
 )
 
 func BuildTickerCmd(app *app.App) *cobra.Command {
-	var tickerTemplate *template.Template
+	var tpl *template.Template
 
 	return &cobra.Command{
 		Use:   "ticker <product>",
@@ -37,7 +37,7 @@ Bid: {{.Bid | highlight}}
 Ask: {{.Ask | highlight}}
 Volume: {{.Volume | highlight}}
 `
-			tickerTemplate, err = template.New("ticker").Funcs(tplFuncMap).Parse(tickerDisplay)
+			tpl, err = template.New("ticker").Funcs(tplFuncMap).Parse(tickerDisplay)
 
 			return
 		},
@@ -48,7 +48,7 @@ Volume: {{.Volume | highlight}}
 				return err
 			}
 
-			err = tickerTemplate.Execute(app.Out, ticker)
+			err = tpl.Execute(app.Out, ticker)
 			if err != nil {
 				return err
 			}

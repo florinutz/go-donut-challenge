@@ -33,6 +33,3 @@ example_ticker: binary ## example for the ticker command
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
-
-
-hlp := is not set. See https://github.com/preichenberger/go-coinbasepro#setup
